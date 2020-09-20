@@ -25,8 +25,8 @@ import {V0_FEED_MODELS, } from './controllers/v0/model.index';
       'X-Access-Token', 'Authorization',
     ],
     methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-    //origin: config.url,
-    origin: "http://localhost:8100",
+    origin: config.url,
+    //origin: "http://localhost:8100",
   }));
   
 
@@ -36,8 +36,6 @@ import {V0_FEED_MODELS, } from './controllers/v0/model.index';
   // Root URI call
   
   app.get( '/', async ( req, res ) => {
-    console.log("HEEEEEEEREEEEEEEEEE");  console.log("HERE" +  config.aws_media_bucket + " " + config.aws_profile + " " + config.database + " " + config.password + " " + config.host);
-    console.log(req + " this is the REQUEST");
     res.send( '/api/v0/' );
     //res.send( '/' );
   } );

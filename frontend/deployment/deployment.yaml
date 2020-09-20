@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: frontend-app
-        image: raduartt/frontend5:latest
+        image: raduartt/frontend:latest
         imagePullPolicy: Always
         ports:
           - containerPort: 80

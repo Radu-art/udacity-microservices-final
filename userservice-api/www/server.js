@@ -19,8 +19,6 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const config_1 = require("./config/config");
 const model_index_1 = require("./controllers/v0/model.index");
 (() => __awaiter(this, void 0, void 0, function* () {
-    console.log("HEEEEEEEREEEEEEEEEE");
-    console.log("HERE" + config_1.config.aws_media_bucket + " " + config_1.config.aws_profile + " " + config_1.config.database + " " + config_1.config.password + " " + config_1.config.host);
     yield sequelize_1.sequelize.addModels(model_index_1.V0_USER_MODELS);
     yield sequelize_1.sequelize.sync();
     const app = express_1.default();

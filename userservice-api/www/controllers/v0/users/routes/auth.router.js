@@ -58,7 +58,6 @@ router.get('/verification', requireAuth, (req, res) => __awaiter(this, void 0, v
     return res.status(200).send({ auth: true, message: 'Authenticated.' });
 }));
 router.post('/login', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    console.log("INSIDE  HEREREEWSR");
     const email = req.body.email;
     const password = req.body.password;
     if (!email || !EmailValidator.validate(email)) {
@@ -75,6 +74,7 @@ router.post('/login', (req, res) => __awaiter(this, void 0, void 0, function* ()
     if (!authValid) {
         return res.status(401).send({ auth: false, message: 'Password was invalid.' });
     }
+    console.log("User with email: " + email + " logged in.");
     const jwt = generateJWT(user);
     res.status(200).send({ auth: true, token: jwt, user: user.short() });
 }));

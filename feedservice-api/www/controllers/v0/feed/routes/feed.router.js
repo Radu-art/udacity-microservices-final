@@ -40,6 +40,7 @@ function requireAuth(req, res, next) {
 exports.requireAuth = requireAuth;
 // Get all feed items
 router.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    console.log("Feeding all items available");
     const items = yield FeedItem_1.FeedItem.findAndCountAll({ order: [['id', 'DESC']] });
     items.rows.map((item) => {
         if (item.url) {
@@ -51,6 +52,7 @@ router.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
 // Get a feed resource
 router.get('/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const { id } = req.params;
+    console.log("Feeding item with ID " + id);
     const item = yield FeedItem_1.FeedItem.findByPk(id);
     res.send(item);
 }));
