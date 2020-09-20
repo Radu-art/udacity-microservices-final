@@ -1,7 +1,6 @@
 # Use ionic base image
 FROM beevelop/ionic AS ionic
-# Use nginx base image
-FROM nginx:alpine
+
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -18,6 +17,9 @@ COPY . .
 
 # RUN ionic init
 RUN ionic build
+
+# Use nginx base image
+FROM nginx:alpine
 
 # COPY deployable pacakge files - www to /usr/share/nginx/html for the reverse-proxy gateway
 COPY --from=ionic  /usr/src/app/www /usr/share/nginx/html
