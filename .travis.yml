@@ -29,12 +29,11 @@ script:
 
 #Build Image: Reverse-Proxy Service
   - cd ..
-  - cd ../reverse-proxy/www
+  - cd ../reverse-proxy
   - docker build -t reverse-proxy:latest .
   - docker tag reverse-proxy:latest raduartt/reverse-proxy:latest
 
 #Build Image: Frontend
-  - cd ..
   - cd ../frontend
   - docker build -t frontend:latest .
   - docker tag frontend:latest raduartt/frontend:latest
