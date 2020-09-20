@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-app
+  labels:
+    service: frontend-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: frontend-app
+  template:
+    metadata:
+      labels:
+        service: frontend-app
+        api: external
+    spec:
+      containers:
+      - name: frontend-app
+        image: raduartt/frontend5:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+      restartPolicy: Always

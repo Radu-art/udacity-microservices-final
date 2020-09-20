@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userapi-service
+  labels:
+    service: userapi-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: userapi-service
+  template:
+    metadata:
+      labels:
+        service: userapi-service
+    spec:
+      containers:
+      - name: feedapi-service
+        image: raduartt/userapi:latest
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+        env:
+        - name: POSTGRESS_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: POSTGRESS_USERNAME
+        - name: POSTGRESS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: POSTGRESS_HOST
+        - name: POSTGRESS_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: POSTGRESS_DATABASE
+        - name: AWS_MEDIA_BUCKET
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: AWS_MEDIA_BUCKET
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: AWS_REGION
+        - name: AWS_PROFILE
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: AWS_PROFILE
+        - name: JWT_SECRET
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: JWT_SECRET
+        - name: URL
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: URL
+        - name: POSTGRESS_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: POSTGRESS_PASSWORD
+        - name: URL
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: URL     
