@@ -25,7 +25,7 @@ script:
   - cd ..
   - cd ../userservice-api/www
   - docker build -t userapi:latest .
-  - docker tag userap:latest raduartt/userapi:latest
+  - docker tag userapi:latest raduartt/userapi:latest
 
 #Build Image: Reverse-Proxy Service
   - cd ..
